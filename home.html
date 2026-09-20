@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product Catalog | ApexGizmo</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script> 
+        <script src="searchbarscript.js" defer></script>
+        <script src="settingsscript.js" defer></script>    
+        <script>
+        if (sessionStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    </head>
+        <body class="light-mode">
+        <header>
+        <nav class="nav-links">
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="cart.html">cart</a>
+            <a href="sell.html">sell</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <div class="brand">
+            <span class="logo-icon"><img src="images/logo.png" style="width: 45px; height: 45px;"></span>
+            <span class="logo-text">ApexGizmo</span>
+        </div>
+         <div class="setting-container">
+                <div class="search-container" id="searchContainer">
+                    <input type="text" class="search-input" placeholder="Search...">
+                    <span class="nav-text1 search-btn" id="searchBtn"><i class="fas fa-search"></i></span>
+                </div>
+                <div class="divider"></div>
+                <button class="nav-text1" id="theme"><i class="fas fa-moon"></i></button><div class="divider"></div>
+    <!-- Notification Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="notification"><i class="fas fa-bell"></i></button>
+        <div class="info-dropdown-panel" id="notification-box">
+            <h3>Recent Updates</h3>
+            <ul class="panel-list" id="dynamic-notifications-list">
+        <li class="no-notif-message" style="font-size: 0.85rem; color: var(--text-subtle); padding: 8px 0;">No recent notifications.</li>
+    </ul>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    <!-- Account Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="account"><i class="fas fa-user"></i></button>
+        <div class="info-dropdown-panel" id="account-box">
+            <h3>My Profile</h3>
+            <p class="user-email">guest.user@apexgizmo.com</p>
+            <div class="panel-divider"></div>
+            <a href="cart.html" class="panel-link"><i class="fas fa-box"></i> Track Orders</a>
+            <a href="#" class="panel-link log-out"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+    </div>
+            </div>
+        </header> 
+
+        <main class="catalog-container">
+            <h2 class="section-title">Trending Gadgets</h2>
+            
+            <div class="product-grid">
+                <!-- Card 1 -->
+                <div class="product-card" data-url="product_detail_view.html">
+                    <div class="product-image"><img src="images/wireless_earbuds.jpg" alt="Apex Wireless Headphones"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Apex Wireless Headphones</h3>
+                        <p class="product-category">Audio</p>
+                        <div class="product-footer">
+                            <span class="product-price">₹7,999</span>
+                            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="product-card" data-url="product_detail_view.html">
+                    <div class="product-image"><img src="images/gizmore-smart-watch.jpeg" alt="Gizmo Smartwatch Series 5"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Gizmo Smartwatch Series 5</h3>
+                        <p class="product-category">Wearables</p>
+                        <div class="product-footer">
+                            <span class="product-price">₹12,499</span>
+                            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="product-card" data-url="product_detail_view.html">
+                    <div class="product-image"><img src="images/mechanical_keyboard.jpeg" alt="Sonic Mechanical Keyboard"></div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sonic Mechanical Keyboard</h3>
+                        <p class="product-category">Accessories</p>
+                        <div class="product-footer">
+                            <span class="product-price">₹4,500</span>
+                            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/pro_ergonomic_mouse.png" alt="Pro Ergonomic Mouse"></div>
+            <div class="product-info">
+                <h3 class="product-name">Pro Ergonomic Mouse</h3>
+                <p class="product-category">Accessories</p>
+                <div class="product-footer"><span class="product-price">₹2,999</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/monitor.jpg" alt="Quantum Gaming Monitor"></div>
+            <div class="product-info">
+                <h3 class="product-name">Quantum Gaming Monitor</h3>
+                <p class="product-category">Displays</p>
+                <div class="product-footer"><span class="product-price">₹24,999</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/webcam.jpg" alt="4K Ultra-Wide Webcam"></div>
+            <div class="product-info">
+                <h3 class="product-name">4K Ultra-Wide Webcam</h3>
+                <p class="product-category">Streaming</p>
+                <div class="product-footer"><span class="product-price">₹6,800</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 7 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/laptop.jpg" alt="Apex Pro Ultra Laptop"></div>
+            <div class="product-info">
+                <h3 class="product-name">Apex Pro Ultra Laptop</h3>
+                <p class="product-category">Computers</p>
+                <div class="product-footer"><span class="product-price">₹89,990</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 8 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/rgb_desk_mate.jpg" alt="RGB Desk Mat Pack"></div>
+            <div class="product-info">
+                <h3 class="product-name">RGB Desk Mat Pack</h3>
+                <p class="product-category">Accessories</p>
+                <div class="product-footer"><span class="product-price">₹1,499</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 9 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/gizmo_smartphoneX.jpg" alt="Gizmo Smartphone X"></div>
+            <div class="product-info">
+                <h3 class="product-name">Gizmo Smartphone X</h3>
+                <p class="product-category">Phones</p>
+                <div class="product-footer"><span class="product-price">₹54,999</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 10 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/pro_tablet.jpg" alt="Pro Tablet & Stylus"></div>
+            <div class="product-info">
+                <h3 class="product-name">Pro Tablet & Stylus</h3>
+                <p class="product-category">Tablets</p>
+                <div class="product-footer"><span class="product-price">₹42,500</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 11 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/wireless_earbuds.jpg" alt="True Wireless Earbuds"></div>
+            <div class="product-info">
+                <h3 class="product-name">True Wireless Earbuds</h3>
+                <p class="product-category">Audio</p>
+                <div class="product-footer"><span class="product-price">₹3,999</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 12 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/studio_mic.jpg" alt="Studio Condenser Mic"></div>
+            <div class="product-info">
+                <h3 class="product-name">Studio Condenser Mic</h3>
+                <p class="product-category">Streaming</p>
+                <div class="product-footer"><span class="product-price">₹8,200</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 13 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/wifi6_router.jpg" alt="Dual-Band Wi-Fi 6 Router"></div>
+            <div class="product-info">
+                <h3 class="product-name">Dual-Band Wi-Fi 6 Router</h3>
+                <p class="product-category">Networking</p>
+                <div class="product-footer"><span class="product-price">₹5,499</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 14 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/power_bank.jpg" alt="20000mAh Power Bank"></div>
+            <div class="product-info">
+                <h3 class="product-name">20000mAh Power Bank</h3>
+                <p class="product-category">Accessories</p>
+                <div class="product-footer"><span class="product-price">₹2,199</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 15 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/fitness_tracker.jpg" alt="Fitness Smart Tracker"></div>
+            <div class="product-info">
+                <h3 class="product-name">Fitness Smart Tracker</h3>
+                <p class="product-category">Wearables</p>
+                <div class="product-footer"><span class="product-price">₹4,999</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 16 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/vr_gear.jpg" alt="Apex Virtual Reality Gear"></div>
+            <div class="product-info">
+                <h3 class="product-name">Apex Virtual Reality Gear</h3>
+                <p class="product-category">Gaming</p>
+                <div class="product-footer"><span class="product-price">₹34,999</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+        <!-- Card 17 -->
+        <div class="product-card" data-url="product_detail_view.html">
+            <div class="product-image"><img src="images/pro_controller.jpg" alt="Pro Controller Wireless"></div>
+            <div class="product-info">
+                <h3 class="product-name">Pro Controller Wireless</h3>
+                <p class="product-category">Gaming</p>
+                <div class="product-footer"><span class="product-price">₹4,890</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+            </div>
+        </div>
+            <!-- Card 18 -->
+            <div class="product-card" data-url="product_detail_view.html">
+                <div class="product-image"><img src="images/anc_earbuds.jpg" alt="Pro Controller Wireless"></div>
+                <div class="product-info">
+                    <h3 class="product-name">ANC Noise Cancelling Pods</h3>
+                    <p class="product-category">Audio</p>
+                    <div class="product-footer"><span class="product-price">₹14,999</span><button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add</button></div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    </main>
+        <footer>
+            <p>&copy; 2026 ApexGizmo. All rights reserved.</p>
+        </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Correctly select target cards via class dot notation
+                const productCards = document.querySelectorAll('.product-card');
+
+                productCards.forEach(card => {
+                    card.addEventListener('click', function(event) {
+                        // Prevent the details page from opening if the user specifically clicks the "Add to Cart" button/icon
+                        if (event.target.closest('.add-to-cart-btn')) {
+                            return; 
+                        }
+
+                        // Grab the unique detail view page specific to this clicked card
+                        const baseUrl = this.getAttribute('data-url');
+
+                        // Clean data-mapping to pull elements matching your HTML tree structures
+                        const productInfo = {
+                            name: this.querySelector(".product-name").textContent.trim(),
+                            category: this.querySelector(".product-category").textContent.trim(),
+                            price: this.querySelector(".product-price").textContent.trim(),
+                            image: this.querySelector('.product-image img').getAttribute('src')
+                        };
+
+                        // Store item variables in session memory, then execute page navigation
+                        sessionStorage.setItem('currentProductView', JSON.stringify(productInfo));
+                        window.open(baseUrl, '_self'); // Uses '_self' to stay in the same window context, use '_blank' for a new tab
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

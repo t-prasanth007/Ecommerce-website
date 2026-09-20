@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact | ApexGizmo</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <script src="settingsscript.js" defer></script> 
+        <style>
+    /* ==========================================
+        12. CONTACT US PAGE ELEMENTS
+    ========================================== */
+main { 
+    max-width: 1000px; 
+    margin: 3rem auto; 
+    padding: 0 1.5rem; 
+}
+
+.page-title { 
+    text-align: center; 
+    margin-bottom: 3rem; 
+}
+
+.page-title h1 { 
+    font-size: 2.5rem; 
+    color: var(--text-main); /* Swapped from #0f172a */
+    margin-bottom: 0.5rem; 
+    transition: color 0.3s ease;
+}
+
+.page-title p { 
+    color: var(--text-subtle); /* Swapped from #475569 */
+    font-size: 1.1rem; 
+    transition: color 0.3s ease;
+}
+
+.contact-container { 
+    display: grid; 
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 40px; 
+}
+
+/* Support Info Column */
+.info-panel { 
+    background: var(--card-bg); /* Swapped from #fff */
+    padding: 30px; 
+    border-radius: 12px; 
+    border: 1px solid var(--card-border); /* Swapped from #e2e8f0 */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.info-panel h2 { 
+    color: var(--text-main); /* Swapped from #0f172a */
+    margin-top: 0; 
+    margin-bottom: 1.5rem; 
+    transition: color 0.3s ease;
+}
+
+.info-group { 
+    margin-bottom: 1.5rem; 
+}
+
+.info-group h4 { 
+    margin: 0 0 5px 0; 
+    color: var(--text-subtle); /* Swapped from #475569 */
+    text-transform: uppercase; 
+    font-size: 0.8rem; 
+    letter-spacing: 0.5px; 
+    transition: color 0.3s ease;
+}
+
+.info-group p { 
+    margin: 0; 
+    color: var(--text-main); /* Swapped from #0f172a */
+    font-weight: 500; 
+    transition: color 0.3s ease;
+}
+
+/* Form Column */
+.form-panel { 
+    background: var(--card-bg); /* Swapped from #fff */
+    padding: 30px; 
+    border-radius: 12px; 
+    border: 1px solid var(--card-border); /* Swapped from #e2e8f0 */
+    box-shadow: var(--card-shadow); /* Links to structural shadow variables */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group { 
+    margin-bottom: 1.25rem; 
+}
+
+.form-group label { 
+    display: block; 
+    margin-bottom: 6px; 
+    font-weight: 500; 
+    color: var(--text-muted); /* Swapped from #334155 */
+    font-size: 0.95rem; 
+    transition: color 0.3s ease;
+}
+
+.form-group input, .form-group textarea { 
+    width: 100%; 
+    padding: 10px 12px; 
+    border: 1px solid var(--search-border); /* Swapped from #cbd5e1 */
+    background-color: var(--bg-color); /* Added to prevent bright inputs on dark viewports */
+    color: var(--text-main); /* Added so form typing is readable in both views */
+    border-radius: 6px; 
+    box-sizing: border-box; 
+    font-family: inherit; 
+    font-size: 1rem; 
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus { 
+    outline: none; 
+    border-color: #38bdf8; 
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); 
+}
+
+.btn-submit { 
+    background: var(--text-main); /* Dynamic swap: dark charcoal in light view, crisp soft white button in dark view */
+    color: var(--bg-color); /* Inverts text alignment inside button natively */
+    border: none; 
+    padding: 12px 24px; 
+    border-radius: 6px; 
+    font-size: 1rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    width: 100%; 
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s; 
+}
+
+.btn-submit:hover { 
+    background-color: #10b981; /* Highlighting changes to green to match your shop button hovers */
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .contact-container { 
+        grid-template-columns: 1fr; 
+    }
+}
+
+
+        </style>
+        <script>
+        if (sessionStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    </head>
+    <body>
+        <header>
+        <nav class="nav-links">
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="cart.html">cart</a>
+            <a href="sell.html">sell</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <div class="brand">
+            <span class="logo-icon"><img src="images/logo.png" style="width: 45px; height: 45px;"></span>
+            <span class="logo-text">ApexGizmo</span>
+        </div>
+         <div class="setting-container">
+                
+                <div class="divider"></div>
+                <button class="nav-text1" id="theme"><i class="fas fa-moon"></i></button><div class="divider"></div>
+                <!-- Notification Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="notification"><i class="fas fa-bell"></i></button>
+        <div class="info-dropdown-panel" id="notification-box">
+            <h3>Recent Updates</h3>
+            <ul class="panel-list" id="dynamic-notifications-list">
+        <li class="no-notif-message" style="font-size: 0.85rem; color: var(--text-subtle); padding: 8px 0;">No recent notifications.</li>
+    </ul>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    <!-- Account Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="account"><i class="fas fa-user"></i></button>
+        <div class="info-dropdown-panel" id="account-box">
+            <h3>My Profile</h3>
+            <p class="user-email">guest.user@apexgizmo.com</p>
+            <div class="panel-divider"></div>
+            <a href="cart.html" class="panel-link"><i class="fas fa-box"></i> Track Orders</a>
+            <a href="#" class="panel-link log-out"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+            </div>
+        </header>
+        <main>
+        <div class="page-title">
+            <h1>Get in Touch</h1>
+            <p>Have an issue with your order or questions about a gadget? We're here to help.</p>
+        </div>
+
+        <div class="contact-container">
+            <!-- Left Side: Information -->
+            <section class="info-panel">
+                <h2>Support Channels</h2>
+                
+                <div class="info-group">
+                    <h4>Customer Support Email</h4>
+                    <p>support@apexgizmo.com</p>
+                </div>
+
+                <div class="info-group">
+                    <h4>Response Time Guarantee</h4>
+                    <p>Within 24 hours (Mon - Fri)</p>
+                </div>
+
+                <div class="info-group">
+                    <h4>Order Tracking Assistance</h4>
+                    <p>Please include your 6-digit Order ID.</p>
+                </div>
+            </section>
+
+            <!-- Right Side: Form -->
+            <section class="form-panel">
+                <form id="contact_form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-id">Order ID (Optional)</label>
+                        <input type="text" id="order-id" name="orderId" placeholder="#12345">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ApexGizmo. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById("contact_form").addEventListener('submit', function(e){
+            e.preventDefault();
+            const name=document.getElementById('name').value
+            const email=document.getElementById('email').value
+            const orderId=document.getElementById('order-id').value
+            const message=document.getElementById('message').value
+
+            const formData={
+                name,
+                email,
+                orderId,
+                message
+            }
+
+            localStorage.setItem("complaint_data", JSON.stringify(formData))
+
+            alert("The message has been sent")
+
+            e.target.reset()
+
+        })
+
+        const savedData=localStorage.getItem('complaint_data')
+        if(savedData){
+            const user=JSON.parse(savedData)
+            console.log(user.name)
+            console.log(user.email)
+            console.log(user.orderId)
+            console.log(user.message)
+        }
+        else{
+            console.log("No data found in localStorage.")
+        }
+    </script>
+    </body>
+</html>

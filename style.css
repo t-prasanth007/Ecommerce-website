@@ -1,0 +1,464 @@
+/* ==========================================
+   1. GLOBAL THEME CONTROL PANEL (:root)
+   ========================================== */
+:root {
+    /* Main Layout Defaults */
+    --bg-color: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #333;             /* Your exact original navigation links color */
+    --text-subtle: #64748b;          /* Your exact original product category text */
+    
+    /* Header Themes (Light Mode) */
+    --header-bg: pink;              /* Your exact original header background */
+    --header-shadow: rgba(0,0,0,0.05);
+    --accent-color: #0033cc;        /* Your exact original brand blue */
+    --divider-color: #cbd5e1;       /* Your exact original divider color */
+    
+    /* Search Layout */
+    --search-bg: #f1f5f9;
+    --search-border: #cbd5e1;
+    
+    /* Content Components (Cards & Grids) */
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: rgba(0, 0, 0, 0.1);
+    --img-bg: #f8fafc;
+    
+    /* Buttons & Interactive Elements */
+    --btn-primary-bg: #0033cc;      /* Your exact original button color */
+    --btn-primary-text: white;
+}
+
+[data-theme="dark"] {
+    /* Main Layout Swaps */
+    --bg-color: #0f172a;            /* Midnight dark slate background */
+    --text-main: #f8fafc;           /* Crisp light-white headings */
+    --text-muted: #cbd5e1;          /* Highly visible soft white for navigation links */
+    --text-subtle: #94a3b8;         /* High-contrast grey for category descriptors */
+    
+    /* Header Themes (Dark Mode) */
+    --header-bg: #1e293b;           /* Smooth dark slate-grey header background */
+    --header-shadow: rgba(0, 0, 0, 0.3);
+    --accent-color: #38bdf8;        /* Vivid light sky blue so icons pop out cleanly */
+    --divider-color: #334155;
+    
+    /* Search Layout */
+    --search-bg: #1e293b;
+    --search-border: #475569;
+    
+    /* Content Components (Cards & Grids) */
+    --card-bg: #1e293b;             /* Sleek structural container boxes */
+    --card-border: #334155;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --card-shadow-hover: rgba(0, 0, 0, 0.4);
+    --img-bg: #0f172a;              /* Matches body behind images */
+    
+    /* Buttons & Interactive Elements */
+    --btn-primary-bg: #38bdf8;      /* Electric sky blue button for excellent dark accessibility */
+    --btn-primary-text: #0f172a;    /* Crisp dark structural text inside the button */
+}
+
+/* ==========================================
+   2. GLOBAL BODY & ACCESSIBILITY 
+   ========================================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================
+   3. NAVIGATION HEADER
+   ========================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 2px 5px var(--header-shadow);
+    background-color: var(--header-bg);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    margin-right: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: color 0.3s ease, font-size 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #10b981;
+    font-size: large;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.logo-icon {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+.divider {
+    width: 1px;
+    height: 18px;
+    background-color: var(--divider-color);
+    transition: background-color 0.3s ease;
+}
+
+.setting-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+}
+
+.nav-text1 {
+    font-size: 20px;
+    color: var(--accent-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* ==========================================
+   4. INTERACTIVE SEARCH BAR
+   ========================================== */
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input {
+    width: 0;
+    opacity: 0;
+    border: none;
+    outline: none;
+    padding: 0;
+    background-color: var(--search-bg);
+    color: var(--text-main);
+    border-radius: 20px;
+    transition: width 0.4s ease, opacity 0.3s ease, padding 0.4s ease, background-color 0.3s ease;
+}
+
+.search-container.active .search-input {
+    width: 180px;
+    opacity: 1;
+    padding: 6px 15px;
+    margin-right: 8px;
+    border: 1px solid var(--search-border);
+}
+
+.search-btn:hover {
+    color: #10b981;
+}
+
+/* ==========================================
+   5. CATALOG CONTAINER & RESPONSIVE GRID
+   ========================================== */
+.catalog-container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 25px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* ==========================================
+   6. INDIVIDUAL PRODUCT CARDS
+   ========================================== */
+.product-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    background-color: var(--img-bg);
+    overflow: hidden;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin: 0 0 4px 0;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.product-category {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.product-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+/* ==========================================
+   7. BUTTONS & INTERACTIVE CALLS TO ACTION
+   ========================================== */
+.add-to-cart-btn {
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #10b981;
+    color: white; /* Forces text to display white seamlessly when hovering green in both themes */
+}
+
+/* ==========================================
+   8. GLOBAL FOOTER
+   ========================================== */
+footer { 
+    text-align: center; 
+    padding: 3rem 1.5rem; 
+    background: #0f172a; 
+    color: #94a3b8; 
+    font-size: 0.9rem; 
+    margin-top: 6rem; 
+}
+
+/* ==========================================
+   15. HEADER INFO DROPDOWN PANELS
+   ========================================== */
+.dropdown-wrapper {
+    position: relative; /* Anchor point for positioning the boxes */
+    display: inline-block;
+}
+
+.info-dropdown-panel {
+    position: absolute;
+    top: 45px;          /* Positions box directly under the header icon bar */
+    right: 0;           /* Snaps the container perfectly to the right side alignment boundary */
+    width: 280px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;      /* Forces panels to sit safely on top of catalog sliders and cards */
+    
+    /* Hidden state settings by default */
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Modifier class to display panels gracefully with JavaScript animation switches */
+.info-dropdown-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info-dropdown-panel h3 {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.panel-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.panel-list li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.panel-list li:last-child {
+    border-bottom: none;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+    margin-bottom: 15px;
+}
+
+.panel-divider {
+    height: 1px;
+    background-color: var(--card-border);
+    margin: 12px 0;
+}
+
+.panel-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+}
+
+.panel-link i {
+    color: var(--accent-color);
+}
+
+.panel-link:hover {
+    color: #10b981;
+}
+
+.panel-link.log-out:hover {
+    color: #ef4444; /* Highlights sign out option in warning red color themes */
+}
+
+
+@media screen and (max-width: 768px) {
+    body {
+        flex-direction: column; 
+    }
+
+    header {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        border-right: none;
+        border-bottom: 1px solid #cbd5e1;
+    }
+
+    .nav-links {
+        flex-direction: row; 
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .setting-container {
+        flex-direction: row; 
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .divider {
+        width: 1px;
+        height: 18px; 
+    }
+
+    .catalog-container {
+        text-align: center; 
+        padding: 20px 15px;
+    }
+
+    .product-grid {
+        grid-template-columns:repeat(2,2fr) ;
+        align-items: center; 
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+    .product-grid{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .product-card{
+        max-width: 350px;
+        font-size: small;
+        justify-content: center;
+    }
+}
+@media screen and(max-width:450px){
+    .nav-links a{
+        display: grid;
+        grid-template-columns: repeat(3,3fr); 
+        justify-content: center;
+        
+    }
+}

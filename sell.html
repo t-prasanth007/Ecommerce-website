@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Product Sell | ApexGizmo</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script> 
+        <script src="settingsscript.js" defer></script>
+        <script>
+        if (sessionStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    </head>
+    <body>
+        <header>
+        <nav class="nav-links">
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="cart.html">cart</a>
+            <a href="sell.html">sell</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <div class="brand">
+            <span class="logo-icon"><img src="images/logo.png" style="width: 45px; height: 45px;"></span>
+            <span class="logo-text">ApexGizmo</span>
+        </div>
+         <div class="setting-container">    
+                <div class="divider"></div>
+                <button class="nav-text1" id="theme"><i class="fas fa-moon"></i></button><div class="divider"></div>
+                <!-- Notification Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="notification"><i class="fas fa-bell"></i></button>
+        <div class="info-dropdown-panel" id="notification-box">
+            <h3>Recent Updates</h3>
+            <ul class="panel-list" id="dynamic-notifications-list">
+        <li class="no-notif-message" style="font-size: 0.85rem; color: var(--text-subtle); padding: 8px 0;">No recent notifications.</li>
+    </ul>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    <!-- Account Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="account"><i class="fas fa-user"></i></button>
+        <div class="info-dropdown-panel" id="account-box">
+            <h3>My Profile</h3>
+            <p class="user-email">guest.user@apexgizmo.com</p>
+            <div class="panel-divider"></div>
+            <a href="cart.html" class="panel-link"><i class="fas fa-box"></i> Track Orders</a>
+            <a href="#" class="panel-link log-out"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+            </div>
+        </header>
+        <main>
+            <form id="electronics-upload-form">
+  
+  <!-- 1. DEVICE IDENTIFICATION -->
+  <fieldset>
+    <legend>Device Details</legend>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="brand">Brand *</label>
+        <input type="text" id="brand" name="brand" placeholder="e.g., Apple, Samsung, Sony" required>
+      </div>
+      <div class="form-group">
+        <label for="model">Model Name / Number *</label>
+        <input type="text" id="model" name="model" placeholder="e.g., iPhone 15 Pro, Galaxy S24, WH-1000XM4" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="device-category">Electronics Category *</label>
+      <select id="device-category" name="category" required>
+        <option value="">-- Select Category --</option>
+        <option value="smartphones">Smartphones & Tablets</option>
+        <option value="laptops">Laptops & Computers</option>
+        <option value="audio">Audio (Headphones, Speakers)</option>
+        <option value="smartwearables">Smartwatches & Wearables</option>
+        <option value="gaming">Gaming Consoles & Accessories</option>
+        <option value="cameras">Cameras & Photography</option>
+      </select>
+    </div>
+  </fieldset>
+
+  <!-- 2. TECHNICAL SPECIFICATIONS & HISTORY -->
+  <fieldset>
+    <legend>Technical Specs & Condition</legend>
+
+    <div class="form-group">
+      <label for="specs">Key Specifications (RAM, Storage, Processor) *</label>
+      <input type="text" id="specs" name="specifications" placeholder="e.g., 8GB RAM, 256GB SSD, M2 Chip" required>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="device-condition">Functional Condition *</label>
+        <select id="device-condition" name="condition" required>
+          <option value="">-- Select Condition --</option>
+          <option value="mint">Flawless (No scratches, works perfectly)</option>
+          <option value="minor-scratches">Good (Minor cosmetic scratches, works perfectly)</option>
+          <option value="damaged">Fair (Visible signs of wear / minor screen scratch)</option>
+          <option value="parts">For Parts / Non-functional</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="device-age">Age of Device *</label>
+        <select id="device-age" name="device_age" required>
+          <option value="">-- Device Age --</option>
+          <option value="under-6-months">Less than 6 months</option>
+          <option value="6-12-months">6 to 12 months</option>
+          <option value="1-2-years">1 to 2 years</option>
+          <option value="2-plus-years">2+ years</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="battery-health">Battery Health Status (Optional)</label>
+      <input type="text" id="battery-health" name="battery_health" placeholder="e.g., 85% capacity, or 'Holds charge well'">
+    </div>
+
+    <div class="form-group">
+      <label for="flaws-description">Functional Issues or Missing Items *</label>
+      <textarea id="flaws-description" name="description" rows="4" placeholder="Are any buttons broken? Does it include the original charger, cables, or box?" required></textarea>
+    </div>
+  </fieldset>
+
+  <!-- 3. PRICING, WARRANTY & VERIFICATION -->
+  <fieldset>
+    <legend>Pricing & Verification</legend>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="selling-price">Your Asking Price (₹) *</label>
+        <input type="number" id="selling-price" name="price" min="1" placeholder="0.00" required>
+      </div>
+      <div class="form-group">
+        <label for="original-price">Original Purchase Price (₹)</label>
+        <input type="number" id="original-price" name="original_price" min="1" placeholder="Optional">
+      </div>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="warranty-check" name="under_warranty" value="yes">
+      <label for="warranty-check">This device is still covered under official brand warranty</label>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="bill-check" name="has_invoice" value="yes">
+      <label for="bill-check">I have the original retail bill / invoice to pass to the buyer</label>
+    </div>
+  </fieldset>
+
+  <!-- 4. MEDIA UPLOAD -->
+  <fieldset>
+    <legend>Upload Device Images</legend>
+    <div class="form-group">
+      <label for="device-images">Product Photos * (Upload 3 to 5 images)</label>
+      <input type="file" id="device-images" name="images" accept="image/*" multiple required>
+      <small>Important: Show the device turned ON in at least one photo to prove it works.</small>
+    </div>
+  </fieldset>
+
+  <div class="form-actions">
+    <button type="submit" class="submit-btn">List Electronics Item</button>
+  </div>
+
+</form>
+
+</main>
+  <style>
+    /* ==========================================
+        14. ELECTRONICS PRODUCT UPLOAD FORM
+      ========================================== */
+#electronics-upload-form {
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 35px;
+  background-color: var(--card-bg); /* Swapped from #ffffff */
+  border: 1px solid var(--card-border); /* Swapped from #e2e8f0 */
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-main); /* Swapped from #1e293b */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+#electronics-upload-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+#electronics-upload-form legend {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent-color); /* Swapped from #0066cc to scale dynamic contrast scales */
+  border-bottom: 2px solid var(--card-border); /* Swapped from #e2e8f0 */
+  width: 100%;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+#electronics-upload-form label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-muted); /* Swapped from #475569 */
+  transition: color 0.3s ease;
+}
+
+#electronics-upload-form input[type="text"],
+#electronics-upload-form input[type="number"],
+#electronics-upload-form select,
+#electronics-upload-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border: 1px solid var(--search-border); /* Swapped from #cbd5e1 */
+  border-radius: 4px;
+  background-color: var(--search-bg); /* Swapped from #f8fafc to remain dark in dark mode */
+  color: var(--text-main); /* Forces text characters to turn white when user types */
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
+}
+
+#electronics-upload-form input:focus,
+#electronics-upload-form select:focus,
+#electronics-upload-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-color); /* Matches theme high contrast accent highlights */
+  background-color: var(--card-bg); /* Flips cleanly to darker card tone on emphasis focus rules */
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); 
+}
+
+#electronics-upload-form textarea {
+  resize: vertical;
+}
+
+#electronics-upload-form small {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--text-subtle); /* Swapped from #64748b */
+  transition: color 0.3s ease;
+}
+
+.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-color); /* Checkbox fills with active blue indicator colors */
+  cursor: pointer;
+}
+
+/* File Selection Drop-Zone Configuration Area */
+#electronics-upload-form input[type="file"] {
+  padding: 20px;
+  background: var(--search-bg); /* Swapped from #f0f7ff to maintain professional aesthetic dark fields */
+  border: 2px dashed var(--search-border); /* Swapped from #99ccff */
+  color: var(--text-muted); /* Ensures placeholder tracking labels remain readable */
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.form-actions {
+  margin-top: 20px;
+}
+
+.submit-btn {
+  background-color: var(--btn-primary-bg); /* Connects button background cleanly to active theme colors */
+  color: var(--btn-primary-text); /* Changes to dark slate charcoal text in dark mode views */
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%; 
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #10b981; /* Highlighting fields turns green to match your universal store hover theme updates */
+  color: white; /* Insures crisp clear text on hover actions */
+}
+
+@media (max-width: 550px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+</style>
+        
+        <script>
+    document.getElementById('electronics-upload-form').addEventListener('submit', function(e) {
+        // Stop form execution from reloading the browser page
+        e.preventDefault();
+
+        // 1. Image count validation (Enforce the 3 to 5 file constraint)
+        const imageFiles = document.getElementById('device-images').files;
+        if (imageFiles.length < 3 || imageFiles.length > 5) {
+            alert(`Error: You uploaded ${imageFiles.length} images. Please select between 3 and 5 product photos.`);
+            return; // Abort submission
+        }
+
+        // Capture input string/numerical form values
+        const brand = document.getElementById('brand').value;
+        const model = document.getElementById('model').value;
+        const category = document.getElementById('device-category').value;
+        const specifications = document.getElementById('specs').value;
+        const condition = document.getElementById('device-condition').value;
+        const age = document.getElementById('device-age').value;
+        const batteryHealth = document.getElementById('battery-health').value;
+        const description = document.getElementById('flaws-description').value;
+        const price = document.getElementById('selling-price').value;
+        const originalPrice = document.getElementById('original-price').value;
+        
+        // Capture boolean state values
+        const underWarranty = document.getElementById('warranty-check').checked; 
+        const hasInvoice = document.getElementById('bill-check').checked;
+
+        // Covert multi-file list arrays into Base64 format promises
+        const imagePromises = [];
+        for (let i = 0; i < imageFiles.length; i++) {
+            const file = imageFiles[i];
+            const reader = new FileReader();
+            const promise = new Promise((resolve) => {
+                reader.onloadend = function() {
+                    resolve(reader.result); 
+                };
+                reader.readAsDataURL(file);
+            });
+            imagePromises.push(promise);
+        }
+
+        // Resolve asynchronous image parsing and write payload directly to local storage
+        Promise.all(imagePromises).then((base64Images) => {
+            const newProduct = {
+                id: Date.now(),
+                brand,
+                model,
+                category,
+                specifications,
+                condition,
+                age,
+                batteryHealth,
+                description,
+                price: parseFloat(price),
+                originalPrice: originalPrice ? parseFloat(originalPrice) : null,
+                underWarranty, 
+                hasInvoice,
+                images: base64Images
+            };
+            
+            // Extract baseline records array database framework safely
+            let existingProducts = JSON.parse(localStorage.getItem('my_market_products')) || [];
+            existingProducts.push(newProduct);
+
+            // Re-stringify context cleanly 
+            localStorage.setItem('my_market_products', JSON.stringify(existingProducts));
+            
+            alert('Success! Your electronics product has been uploaded to Local Storage.');
+            document.getElementById('electronics-upload-form').reset();
+        });
+    });
+</script>
+    </body>
+</html>

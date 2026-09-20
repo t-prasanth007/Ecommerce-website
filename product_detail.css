@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Allows your custom top bar and card to stack correctly */
+  min-height: 100vh;
+  background-color: var(--bg-color); /* Connects background to your main theme */
+}
+
+/* --- Container Page Layout Structure --- */
+.detail-container {
+  background-color: var(--card-bg); /* Swapped from #ffffff */
+  max-width: 1000px;
+  width: 90%; /* Fixed alignment width sizing bounds */
+  margin: 40px auto;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split into 2 equal columns on desktop */
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Left Image Layout Column --- */
+.detail-image-section {
+  background-color: var(--img-bg); /* Swapped from #f1f3f5 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.detail-image-section img {
+  max-width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.detail-image-section img:hover {
+  transform: scale(1.03); /* Subtle zoom effect on hover */
+}
+
+/* --- Right Textual Specification Column --- */
+.detail-info-section {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail-badge {
+  align-self: flex-start;
+  background-color: var(--search-bg); /* Adapts light/dark background behind the badge */
+  color: var(--accent-color); /* Uses theme primary accent color */
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.detail-title {
+  font-size: 2.2rem;
+  color: var(--text-main); /* Swapped from #212529 */
+  margin-bottom: 12px;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.detail-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fab005; /* Retained yellow gadget accent color */
+  margin-bottom: 24px;
+}
+
+.detail-description-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main); /* Swapped from #495057 */
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.detail-description {
+  font-size: 1rem;
+  color: var(--text-subtle); /* Swapped from #6c757d */
+  line-height: 1.6;
+  margin-bottom: 32px;
+  transition: color 0.3s ease;
+}
+
+/* --- Interactive Action Control Layout Block --- */
+.detail-action-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.detail-action-buttons button {
+  flex: 1;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-buy {
+  background-color: #fab005;
+  color: #ffffff;
+}
+
+.btn-buy:hover {
+  background-color: #e59b00;
+}
+
+.btn-cart {
+  background-color: var(--text-main); /* Swapped from #212529 to reverse automatically */
+  color: var(--bg-color); /* Flips text color dynamically inside button */
+}
+
+.btn-cart:hover {
+  opacity: 0.9;
+}
+
+/* --- Back Route Navigation Link --- */
+.back-link {
+  display: inline-block;
+  color: var(--text-subtle); /* Swapped from #868e96 */
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  align-self: flex-start;
+}
+
+.back-link:hover {
+  color: var(--accent-color); /* Swapped from #212529 */
+}
+
+/* --- Responsive Layout Configurations (Mobile Optimization) --- */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+  
+  .detail-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+  }
+
+  .detail-image-section {
+    padding: 30px;
+  }
+
+  .detail-image-section img {
+    max-height: 300px;
+  }
+
+  .detail-info-section {
+    padding: 30px 20px;
+  }
+
+  .detail-title {
+    font-size: 1.8rem;
+  }
+  
+  .detail-action-buttons {
+    flex-direction: column; 
+    gap: 12px;
+  }
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <script src="settingsscript.js"></script>
+        <script>
+        if (sessionStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+        <style>
+/* ==========================================
+   9. SHOPPING CART PAGE ELEMENTS
+   ========================================== */
+.cart-page-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: sans-serif;
+}
+.cart-main-content {
+    flex: 1;
+}
+
+.page-title {
+    font-size: 1.6rem;
+    color: var(--text-main); /* Changed from #1e293b */
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+/* Cart items list container block layout */
+.cart-items-list {
+    background-color: var(--card-bg); /* Changed from #ffffff */
+    border: 1px solid var(--card-border); /* Changed from #e2e8f0 */
+    border-radius: 12px;
+    padding: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.continue-shopping {
+    margin-top: 20px;
+}
+
+.continue-shopping a {
+    color: var(--accent-color); /* Changed from #0033cc to shift dynamically */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Order Summary Card Panel UI positioning rules */
+.order-summary-card {
+    background-color: var(--cta-bg); /* Changed from #f8fafc to use your alternate grey background variable */
+    border: 1px solid var(--card-border); /* Changed from #e2e8f0 */
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.order-summary-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text-main); /* Changed from #1e293b */
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: var(--text-subtle); /* Changed from #64748b to remain readable on grey layouts */
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.free-delivery {
+    color: #10b981; /* Retained green for highlighting promo discount code benefits */
+    font-weight: bold;
+}
+
+.summary-divider {
+    height: 1px;
+    background-color: var(--card-border); /* Changed from #e2e8f0 */
+    margin: 16px 0;
+    transition: background-color 0.3s ease;
+}
+
+.total-row {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: var(--text-main); /* Changed from #1e293b */
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.checkout-action-btn {
+    width: 100%;
+    background-color: var(--btn-primary-bg); /* Changed from #0033cc to use adaptive layout colors */
+    color: var(--btn-primary-text); /* Changed from white to adapt cleanly */
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.checkout-action-btn:hover {
+    background-color: #10b981;
+    color: white; /* Forces text layout layout visibility to white when highlighting interactive elements green */
+}
+
+@media (min-width: 769px) {
+    .order-summary-card {
+        width: 350px;
+        position: sticky;
+        top: 100px;
+    }
+}
+@media(max-width:768px){
+     .cart-page-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart-main-content{
+        width: 600px;
+    }
+    
+    .order-summary-card{
+        max-width: 600px;
+    }
+    footer{
+        display: block;
+    }
+}
+@media(max-width:600px){
+   
+    .cart-main-content{
+        max-width: 350px;
+    }
+    .order-summary-card{
+        max-width: 350px;
+    }
+
+
+}
+@media (min-width: 768px) {
+    .cart-page-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <header>
+        <nav class="nav-links">
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="cart.html">cart</a>
+            <a href="sell.html">sell</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <div class="brand">
+            <span class="logo-icon"><img src="images/logo.png" style="width: 45px; height: 45px;"></span>
+            <span class="logo-text">ApexGizmo</span>
+        </div>
+         <div class="setting-container">
+                
+                <div class="divider"></div>
+                <button class="nav-text1" id="theme"><i class="fas fa-moon"></i></button><div class="divider"></div>
+                <!-- Notification Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="notification"><i class="fas fa-bell"></i></button>
+        <div class="info-dropdown-panel" id="notification-box">
+            <h3>Recent Updates</h3>
+            <ul class="panel-list" id="dynamic-notifications-list">
+        <li class="no-notif-message" style="font-size: 0.85rem; color: var(--text-subtle); padding: 8px 0;">No recent notifications.</li>
+    </ul>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    <!-- Account Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="account"><i class="fas fa-user"></i></button>
+        <div class="info-dropdown-panel" id="account-box">
+            <h3>My Profile</h3>
+            <p class="user-email">guest.user@apexgizmo.com</p>
+            <div class="panel-divider"></div>
+            <a href="cart.html" class="panel-link"><i class="fas fa-box"></i> Track Orders</a>
+            <a href="#" class="panel-link log-out"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+            </div>
+        </header>
+        
+    <main class="cart-page-container">
+        <div class="cart-main-content">
+            <h2 class="page-title"><i class="fas fa-shopping-basket"></i> Your Shopping Cart</h2>
+            
+            <div class="cart-items-list" id="cartItemContainer">
+                <!-- Dynamic items will be generated here by script.js -->
+                <p class="empty-cart-text">Your cart is currently empty.</p>
+            </div>
+            
+            <div class="continue-shopping">
+                <a href="home.html"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+            </div>
+        </div>
+
+        <aside class="order-summary-card">
+            <h3>Order Summary</h3>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartTotalValue">₹0</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery Charges</span>
+                <span class="free-delivery">FREE</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-row total-row">
+                <span>Total Amount:</span>
+                <span id="cartFinalTotal">₹0</span>
+            </div>
+            <button class="checkout-action-btn">Proceed to Checkout</button>
+        </aside>
+    </main>
+    <footer>
+        <p>&copy; 2026 ApexGizmo. All rights reserved.</p>
+    </footer>
+    <script>
+    // Generates a clean unique tracking string, e.g., "AG-KUF6H8S-7A4B"
+    function generateOrderId(){
+        const prefix = "AG";
+        const timestamp = Date.now().toString(36).toUpperCase();
+        const randomBits = Math.random().toString(36).substring(2,6).toUpperCase();
+        
+        return `${prefix}-${timestamp}-${randomBits}`; // Fixed missing \$ sign
+    }
+
+    const checkoutBtn = document.querySelector(".checkout-action-btn");
+    
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            // Fixed key capitalization to match your existing app storage name: "apexCart"
+            const current_cart = JSON.parse(localStorage.getItem('apexCart')) || [];
+
+            if (current_cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            else{
+                alert("successfully order placed")
+
+            }
+            
+            const totalElement = document.getElementById("cartFinalTotal");
+            const finalAmount = totalElement ? totalElement.textContent.trim() : "₹0";
+            const uniqueOrderId = generateOrderId();
+            
+            const finalOrder = {
+                orderId: uniqueOrderId,
+                items: current_cart,
+                totalAmount: finalAmount, // Saves the text content string (like "₹14,999")
+                date: new Date().toISOString()
+            };
+
+            // Save order data into history database records
+            localStorage.setItem('lastPlacedOrder', JSON.stringify(finalOrder));
+            
+            // Wipe out the shopping basket storage array cleanly
+            //localStorage.removeItem('apexCart');
+            
+            // Fixed correct page redirect route window redirection rule
+            window.location.href = "checkout.html";
+        });
+    }
+
+  
+</script>
+
+    </body>
+</html>
+
+<h3>Recent Updates</h3>
+            <ul class="panel-list">
+                <li>🎉 Order #AG-7K2X was processed successfully.</li>
+                <li>🚚 Slashed shipping rates applied to audio gear!</li>
+            </ul>

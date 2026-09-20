@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Product Details | ApexGizmo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product_detail.css"> 
+    <script src="script.js" defer></script>
+    <script src="settingsscript.js" defer></script>
+    <script>
+        if (sessionStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+<body>
+    <div style="padding: 15px 40px; display: flex; justify-content: flex-end;">
+        <button class="nav-text1" id="theme"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Product Detail Presentation Section Container -->
+    <div class="detail-container">
+        <!-- Left Column: Image Gallery View -->
+        <div class="detail-image-section">
+            <img id="detail-img" src="" alt="Loading Product Image...">
+        </div>
+
+        <!-- Right Column: Content Specification Fields -->
+        <div class="detail-info-section">
+            <span id="detail-category" class="detail-badge">Category</span>
+            <h1 id="detail-name" class="detail-title">Loading Product Name...</h1>
+            <div id="detail-price" class="detail-price">₹0.00</div>
+            
+            <p class="detail-description-heading">Product Overview</p>
+            <p id="detail-description" class="detail-description">
+                Experience premium quality, high durability, and industry-leading performance tailored directly to your day-to-day lifestyle configurations.
+            </p>
+
+            <div class="detail-action-buttons">
+                <button class="btn-buy">Buy Now</button>
+                <button class="btn-cart" id="details-add-btn">Add to Cart</button>
+            </div>
+
+            <a href="home.html" class="back-link">← Back to Catalog</a>
+        </div>
+    </div>
+
+    <!-- Core Page Transaction & Rendering Logic Engine -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sessionData = sessionStorage.getItem('currentProductView');
+            const currentProduct = sessionData ? JSON.parse(sessionData) : null;
+
+            const productName = document.getElementById('detail-name');
+            const productPrice = document.getElementById('detail-price');
+            const productCategory = document.getElementById('detail-category');
+            const productImage = document.getElementById('detail-img');
+            const detailsAddBtn = document.getElementById('details-add-btn');
+            const buyNowBtn = document.querySelector(".btn-buy");
+
+            if (currentProduct) {
+                if (productName) productName.textContent = currentProduct.name;
+                if (productPrice) productPrice.textContent = currentProduct.price;
+                if (productCategory) productCategory.textContent = currentProduct.category;
+                if (productImage) {
+                    productImage.src = currentProduct.image;
+                    productImage.alt = currentProduct.name;
+                }
+
+                // --- Enforce persistent "Added" button state check ---
+                let cart = JSON.parse(localStorage.getItem('apexCart')) || [];
+                const isInCart = cart.some(item => item.name === currentProduct.name);
+
+                if (isInCart && detailsAddBtn) {
+                    lockButtonAsAdded(detailsAddBtn);
+                }
+                
+                // --- Hook Up Add to Cart Button Functionality ---
+                if (detailsAddBtn && !isInCart) {
+                    detailsAddBtn.addEventListener('click', () => {
+                        let freshCart = JSON.parse(localStorage.getItem('apexCart')) || [];
+                        
+                        const productToSave = {
+                            name: currentProduct.name,
+                            price: currentProduct.price,
+                            image: currentProduct.image,
+                            quantity: 1
+                        };
+                        
+                        freshCart.push(productToSave);
+                        localStorage.setItem('apexCart', JSON.stringify(freshCart));
+                        
+                        lockButtonAsAdded(detailsAddBtn);
+                    });
+                }
+
+                // --- Buy Now Button Runtime Tracking System ---
+                if (buyNowBtn) {
+                    buyNowBtn.addEventListener('click', () => {
+                        const prefix = "AG";
+                        const timestamp = Date.now().toString(36).toUpperCase();
+                        const randomBits = Math.random().toString(36).substring(2,6).toUpperCase();
+                        const uniqueOrderId = `${prefix}-${timestamp}-${randomBits}`;
+
+                        const finalOrder = {
+                            orderId: uniqueOrderId,
+                            items: [{
+                                name: currentProduct.name,
+                                price: currentProduct.price,
+                                image: currentProduct.image,
+                                quantity: 1
+                            }],
+                            totalAmount: currentProduct.price, 
+                            date: new Date().toISOString()
+                        };
+
+                        localStorage.setItem('lastPlacedOrder', JSON.stringify(finalOrder));
+                        alert("Success! Your order has been placed.");
+                        
+                        // Crucial Safety Update: Route mapping corrected to forward straight to success.html
+                        window.location.href = "checkout.html";
+                    });
+                }
+
+            } else {
+                if (productName) productName.textContent = "Product not found";
+                console.error("No product data was transferred to SessionStorage.");
+            }
+        });
+
+        // Helper function to cleanly apply locked validation button status styles
+        function lockButtonAsAdded(button) {
+            button.innerHTML = `<i class="fas fa-check"></i> Added`;
+            button.style.backgroundColor = '#10b981'; 
+            button.style.color = '#ffffff';
+            button.disabled = true;
+            button.style.cursor = 'default';
+        }
+    </script>
+</body>
+</html>

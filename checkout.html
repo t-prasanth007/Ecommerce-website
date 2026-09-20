@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Order Confirmation | ApexGizmo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="settingsscript.js" defer></script>
+    <script>
+        if (sessionStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    
+    <style>
+        /* Scoped styles specifically targeting the elements unique to this layout structure */
+        body.success-page {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* Allows theme toggle button to stay neatly stacked above */
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Independent absolute position toggle for cleaner minimal success viewport layout */
+        .success-theme-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        body.success-page .card {
+            background-color: var(--card-bg);
+            max-width: 420px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--card-border);
+            text-align: center;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .success-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+
+        body.success-page .card h2 {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        body.success-page .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin: 0 0 25px 0;
+            transition: color 0.3s ease;
+        }
+
+        body.success-page .card .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--search-bg);
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .order-id {
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        .total-price {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #10b981; 
+        }
+
+        .btn-home {
+            display: block;
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 25px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-home:hover {
+            background-color: #10b981;
+            color: white;
+        }
+    </style>
+</head>
+<body class="success-page">
+    <div class="success-theme-container">
+        <button class="nav-text1" id="theme"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Main Content Summary Container -->
+    <div class="card"> 
+        <img class="success-icon" id="success-icon" src="images/logo.png" style="width: 45px; height: 45px;" alt="ApexGizmo Logo"/>
+        <h2>Thank You for Your Purchase!</h2>
+        <p>Your order has been placed successfully.</p>
+        
+        <!-- Updated structure tags utilizing explicit .info-row helper class markers instead of plain divs -->
+        <div class="info-row">Order ID: <span id="display-order-id" class="order-id">Loading...</span></div>
+        <div class="info-row">Total Paid: <span id="display-total-amount" class="total-price">₹0</span></div>
+        
+        <p style="color: var(--text-subtle); font-size: 14px; margin-top: 15px;">A receipt has been sent to your email.</p>
+        <a href="home.html" class="btn-home">Continue Shopping</a>
+    </div>
+
+    <!-- Data Injection Runtime Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Retrieve transaction details generated by checkout processes
+            const storedOrder = localStorage.getItem('lastPlacedOrder');
+
+            if (storedOrder) {
+                const orderData = JSON.parse(storedOrder);
+
+                const displayId = document.getElementById('display-order-id');
+                const displayTotal = document.getElementById('display-total-amount');
+
+                if (displayId) displayId.textContent = orderData.orderId;
+                if (displayTotal) displayTotal.textContent = orderData.totalAmount;
+                
+                // Keep commented out for debug, uncomment in production if you want single views:
+                //localStorage.removeItem('lastPlacedOrder');
+            } else {
+                // Fallback route redirect safeguards if data profiles don't exist
+                window.location.href = "home.html";
+            }
+        });
+    </script>
+</body>
+</html>

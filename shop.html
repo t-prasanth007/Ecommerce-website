@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shop | ApexGizmo</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <script src="settingsscript.js" defer></script> 
+        <script>
+        if (sessionStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+        <style>
+    /* ==========================================
+        13. MARKETPLACE / USER SELLING PAGE
+    ========================================== */
+.marketplace-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: var(--card-bg); /* Swapped from #ffffff */
+    border: 1px solid var(--card-border); /* Swapped from #e2e8f0 */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow); /* Links to unified theme container shading */
+    display: flex;
+    flex-direction: column; /* Fixed: Corrected your original 'coloumn' spelling typo */
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);    
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: var(--img-bg); /* Swapped from #f8fafc to keep canvas areas dark */
+    transition: background-color 0.3s ease;
+}
+
+.product-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info .brand-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-subtle); /* Swapped from #64748b */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.product-info h3 {
+    font-size: 1.1rem;
+    margin: 4px 0 8px 0;
+    color: var(--text-main); /* Swapped from #1e293b to turn white cleanly */
+    transition: color 0.3s ease;
+}
+
+.product-info .specs-text {
+    font-size: 0.85rem;
+    color: var(--text-subtle); /* Swapped from #64748b */
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.condition-badge {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: var(--search-bg); /* Uses theme alternate background to look professional in dark mode */
+    color: var(--accent-color); /* Connects to theme bright blue accent */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-color); /* Swapped from #0066cc to scale visibility */
+    margin-top: auto;
+    transition: color 0.3s ease;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--btn-primary-bg); /* Links cleanly to active blue background variables */
+    color: var(--btn-primary-text); /* Changes to dark charcoal in dark mode for crisp readability */
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0 0 7px 7px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.buy-btn:hover {
+    background: #10b981; /* Changes to matching green on hover to fit storefront aesthetics */
+    color: white; /* Guarantees high-contrast text layout tracking */
+}
+
+        </style>
+        
+    </head>
+    <body>
+        <header>
+        <nav class="nav-links">
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="cart.html">cart</a>
+            <a href="sell.html">sell</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <div class="brand">
+            <span class="logo-icon"><img src="images/logo.png" style="width: 45px; height: 45px;"></span>
+            <span class="logo-text">ApexGizmo</span>
+        </div>
+         <div class="setting-container">
+                
+                <div class="divider"></div>
+                <button class="nav-text1" id="theme"><i class="fas fa-moon"></i></button><div class="divider"></div>
+                <!-- Notification Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="notification"><i class="fas fa-bell"></i></button>
+        <div class="info-dropdown-panel" id="notification-box">
+            <h3>Recent Updates</h3>
+            <ul class="panel-list" id="dynamic-notifications-list">
+        <li class="no-notif-message" style="font-size: 0.85rem; color: var(--text-subtle); padding: 8px 0;">No recent notifications.</li>
+    </ul>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    <!-- Account Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="account"><i class="fas fa-user"></i></button>
+        <div class="info-dropdown-panel" id="account-box">
+            <h3>My Profile</h3>
+            <p class="user-email">guest.user@apexgizmo.com</p>
+            <div class="panel-divider"></div>
+            <a href="cart.html" class="panel-link"><i class="fas fa-box"></i> Track Orders</a>
+            <a href="#" class="panel-link log-out"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+            </div>
+        </header>
+        <div class="marketplace-container">
+            <h2>Available Electronics For Sale</h2>
+            <div id="products-grid" class="products-grid">
+            </div>
+        </div>
+       <script>
+            function displayMarketProducts(){
+                const productsGrid=document.getElementById('products-grid');
+                //fetch data from localstorage
+                const storedProducts=JSON.parse(localStorage.getItem('my_market_products'))||[];
+                productsGrid.innerHTML='';
+                if(storedProducts.length===0){
+                productsGrid.innerHTML=`<p style="grid-column: 1/-1; text-align:center; color:#64748b;">No devices uploaded yet.</p>`;
+                return;
+                }
+                storedProducts.forEach(product => {
+                  const displayImage=(product.images && product.images.length>0)?product.images[0]:'https://placeholder.com';
+                  
+                  //dynamic html string framework
+                  const cardHtml=`
+                  <div class="product-card">
+                  <img src="${displayImage}" alt="${product.brand} ${product.model}">
+                    <div class="product-info">
+                        <span class="brand-tag">${product.brand}</span>
+                        <h3>${product.model}</h3>
+                        <span class="condition-badge">Item #${product.id}</span>
+                        <p class="specs-text">${product.specifications||'No specs provided'}</p>
+                        <div class="product-price">₹${product.price.toLocaleString('en-IN')}</div>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct(${product.id})">Buy Now</button>
+                    </div>`;
+                    productsGrid.innerHTML+=cardHtml;
+                });
+                
+            }
+                function buyProduct(productId){
+                    alert("Initiating checkout sequence for electronics")
+                }
+            displayMarketProducts();
+            
+        </script>
+         
+    </body>
+</html>

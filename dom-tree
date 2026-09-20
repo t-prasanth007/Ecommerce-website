@@ -1,0 +1,207 @@
+├─ header
+│   ├─ nav.nav-links
+│   │   ├─ a
+│   │   ├─ a
+│   │   ├─ a
+│   │   └─ a
+│   ├─ div.brand
+│   │   ├─ span.logo-icon
+│   │   │   └─ img
+│   │   └─ span.logo-text
+│   └─ div.setting-container
+│       ├─ div#searchContainer.search-container
+│       │   ├─ input.search-input
+│       │   └─ span#searchBtn.nav-text1.search-btn
+│       │       └─ i.fas.fa-search
+│       ├─ div.divider
+│       ├─ a#setting.nav-text1
+│       │   └─ i.fas.fa-cog
+│       ├─ div.divider
+│       ├─ a#notification.nav-text1
+│       │   └─ i.fas.fa-bell
+│       ├─ div.divider
+│       └─ a#account.nav-text1
+│           └─ i.fas.fa-user
+└─ main.catalog-container
+    ├─ h2.section-title
+    └─ div.product-grid
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        ├─ div.product-card
+        │   ├─ div.product-image
+        │   │   └─ img
+        │   └─ div.product-info
+        │       ├─ h3.product-name
+        │       ├─ p.product-category
+        │       └─ div.product-footer
+        │           ├─ span.product-price
+        │           └─ button.add-to-cart-btn
+        │               └─ i.fas.fa-shopping-cart
+        └─ div.product-card
+            ├─ div.product-image
+            │   └─ img
+            └─ div.product-info
+                ├─ h3.product-name
+                ├─ p.product-category
+                └─ div.product-footer
+                    ├─ span.product-price
+                    └─ button.add-to-cart-btn
+                        └─ i.fas.fa-shopping-cart

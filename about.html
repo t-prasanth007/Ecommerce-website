@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <script src="settingsscript.js" defer></script>
+    <title>About Us | ApexGizmo</title>
+    <script>
+        if (sessionStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    <style>
+
+main { 
+    max-width: 1000px; 
+    margin: 3rem auto; 
+    padding: 0 1.5rem; 
+}
+
+.main-container { 
+    text-align: center; 
+    margin-bottom: 4rem; 
+}
+
+.main-container h1 { 
+    font-size: 2.5rem; 
+    color: var(--text-main); 
+    margin-bottom: 1rem; 
+}
+
+.main-container p { 
+    font-size: 1.2rem; 
+    color: var(--text-muted); 
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px; 
+    margin-bottom: 4rem; 
+}
+
+.card { 
+    border: 1px solid var(--card-border); /* Changed from #e2e8f0 */
+    padding: 25px; 
+    border-radius: 12px; 
+    background: var(--card-bg); /* Changed from #fff */
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.card h3 { 
+    margin-top: 0; 
+    color: var(--text-main); /* Changed from #0f172a */
+}
+
+.cta-section { 
+    background: var(--cta-bg); /* Changed from #f8fafc */
+    padding: 30px; 
+    border-radius: 12px; 
+    text-align: center; 
+    border: 1px solid var(--card-border); /* Changed from #e2e8f0 */
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.btn { 
+    display: inline-block; 
+    background: #000; 
+    color: #fff; 
+    padding: 10px 24px; 
+    border-radius: 6px; 
+    text-align: center; 
+    text-decoration: none; 
+    font-weight: 600; 
+    margin-top: 15px; 
+}
+
+/* Keeps the button clearly visible against dark backgrounds */
+[data-theme="dark"] .btn {
+    background: #fff;
+    color: #000;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="cart.html">cart</a>
+            <a href="sell.html">sell</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <div class="brand">
+            <span class="logo-icon"><img src="images/logo.png" style="width: 45px; height: 45px;"></span>
+            <span class="logo-text">ApexGizmo</span>
+        </div>
+         <div class="setting-container">
+                
+                <div class="divider"></div>
+                <button class="nav-text1" id="theme"><i class="fas fa-moon"></i></button><div class="divider"></div>
+                <!-- Notification Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="notification"><i class="fas fa-bell"></i></button>
+        <div class="info-dropdown-panel" id="notification-box">
+            <h3>Recent Updates</h3>
+            <ul class="panel-list" id="dynamic-notifications-list">
+        <li class="no-notif-message" style="font-size: 0.85rem; color: var(--text-subtle); padding: 8px 0;">No recent notifications.</li>
+    </ul>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    <!-- Account Section Wrapper -->
+    <div class="dropdown-wrapper">
+        <button class="nav-text1" id="account"><i class="fas fa-user"></i></button>
+        <div class="info-dropdown-panel" id="account-box">
+            <h3>My Profile</h3>
+            <p class="user-email">guest.user@apexgizmo.com</p>
+            <div class="panel-divider"></div>
+            <a href="cart.html" class="panel-link"><i class="fas fa-box"></i> Track Orders</a>
+            <a href="#" class="panel-link log-out"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+            </div>
+        </header>
+
+    <main>
+        <!-- Brand Intro -->
+        <section class="main-container">
+            <h1>Peak Innovation. Everyday Gear.</h1>
+            <p>At ApexGizmo, we source, test, and deliver top-tier tech accessories and smart gadgets designed to elevate your daily routine.</p>
+        </section>
+
+        <!-- E-commerce Value Props -->
+        <section class="grid">
+            <div class="card">
+                <h3>Vetted Quality</h3>
+                <p>We don't just sell gadgets—we test them. Every item in our inventory passes strict performance benchmarks before hitting our shelves.</p>
+            </div>
+            <div class="card">
+                <h3>Global Delivery</h3>
+                <p>Equipped with optimized fulfillment centers, we guarantee fast dispatch times and transparent package tracking right to your doorstep.</p>
+            </div>
+            <div class="card">
+                <h3>24/7 Support</h3>
+                <p>Our dedicated support team is always standing by to help you solve compatibility issues, setup hurdles, or manage returns seamlessly.</p>
+            </div>
+        </section>
+
+        <!-- CTA back to cart -->
+        <section class="cta-section">
+            <h2>Ready to upgrade your tech stack?</h2>
+            <p>Explore our trending catalog of chargers, audio gear, and productivity tools.</p>
+            <a href="cart.html" class="btn">Browse cart</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ApexGizmo. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
