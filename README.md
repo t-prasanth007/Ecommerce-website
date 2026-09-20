@@ -88,6 +88,7 @@ You only need a modern web browser installed (such as Google Chrome, Mozilla Fir
    Open `home.html` directly in your web browser, or use the **Live Server** extension in Visual Studio Code to launch a localized development host.
 
 ---
+
 ## Screenshots
 
 <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/5157614f-d932-4e18-a26a-8d22f257eb7a" />
@@ -96,10 +97,7 @@ You only need a modern web browser installed (such as Google Chrome, Mozilla Fir
 
 <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/abbd81a3-86f2-49b9-9df9-a9e7beabc018" />
 
-
 <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/35723e81-4fa9-4e34-8e67-f17e5d88ed5e" />
-
-
 
 ## 💡 How to Use
 
