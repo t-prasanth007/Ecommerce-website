@@ -11,6 +11,7 @@
 - [Storage Architecture](#%EF%B8%8F-storage-architecture)
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
+- [Screenshots](#-Screenshots)
 - [How to Use](#-how-to-use)
 
 ---
