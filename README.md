@@ -90,7 +90,7 @@ You only need a modern web browser installed (such as Google Chrome, Mozilla Fir
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
 <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/5157614f-d932-4e18-a26a-8d22f257eb7a" />
 
