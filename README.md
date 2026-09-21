@@ -13,6 +13,7 @@
 - [Getting Started](#-getting-started)
 - [Screenshots](#-Screenshots)
 - [How to Use](#-how-to-use)
+- [Future Enhancement](#-future-enhancement)
 
 ---
 
@@ -100,9 +101,32 @@ You only need a modern web browser installed (such as Google Chrome, Mozilla Fir
 
 <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/35723e81-4fa9-4e34-8e67-f17e5d88ed5e" />
 
+---
+
 ## 💡 How to Use
 
 * **Using the Search:** Click the search icon in the header to reveal the search input field. Type your query to instantly filter items in the catalog. Click the icon again to collapse and close the search bar.
 * **Adding Products:** Navigate to **Shop**, click **Add to Cart** on a product card, or open a card to click **Buy Now** to bypass standard shopping phases.
 * **Simulating Vendor Lists:** Open the **Sell** view, enter dummy product parameters (Title, Price, Category), hit submit, and verify its insertion on the **Shop** page.
+
+---
+
+## 🚀 Future Enhancements
+
+Here are the planned upgrades and feature expansions intended for future development cycles:
+
+### 🎨 Front-End & UI Refinements
+* **Stripe Sandbox Integration:** Replace the simulated billing pipeline with a fully operational sandbox environment utilizing the **Stripe Payment API** or **PayPal SDK**.
+* **Advanced Catalog Matrix Filters:** Implement multi-tier sidebar filters allowing users to sort item grids by price margins (low-to-high) or star-rating classifications.
+* **Animated Slide-Out Cart:** Transition the static layout structure into an inline, animated cart drawer that glides into view from the right boundary upon item triggers.
+* **Client Validation Profiles:** Expand the account button menu into a persistent client-side authorization layout storing profile setups via secured credentials.
+
+### ⚙️ Backend & Architecture Upgrades
+* **Cloud Database Migration:** Transition away from volatile browser storage models into a live non-relational ecosystem like **MongoDB** or **Firebase Firestore** for unified tracking.
+* **Centralized Admin Control Board:** Construct an isolated administrative view allowing store owners to handle inventory updates, update prices, and process complaint tickets.
+* **Automated Invoice Emailing:** Integrate a mailing API engine like **EmailJS** to automatically dispatch receipt breakdowns and unique order keys directly to user text fields.
+
+### ⚡ Optimization & Deployment
+* **Progressive Web App (PWA) Setup:** Introduce offline caching strategies using active Service Workers so the framework operates smoothly without active internet links.
+
 * **Tracking Orders:** Finalize an order on the **Checkout** page. Afterward, click the notification bell icon to review your latest order summary, or click your profile avatar to locate the order map tracker.
