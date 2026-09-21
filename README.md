@@ -13,7 +13,7 @@
 - [Getting Started](#-getting-started)
 - [Screenshots](#-Screenshots)
 - [How to Use](#-how-to-use)
-- [Future Enhancement](#-future-Enhancement)
+- [Future Enhancements](#-future-enhancements)
 
 ---
 
